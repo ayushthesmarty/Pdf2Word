@@ -33,7 +33,7 @@ def open_files(username):
 
 # INPUT/OUTPUT PATH
 pdf_paths = open_files(current_user)
-output_path = f"C:\\Users\\{current_user}\\Downloads\\wordOutput"
+output_path = os.path.normcase(filedialog.askdirectory())
 
 # CHECK THE PDF PATHS TO MAKE SURE THEY DID NOT PRESS CANCEL ON THE FILES SELECTION
 if not pdf_paths:
@@ -47,7 +47,6 @@ else:
 
     # GET FILE NAME AND NORMALIZED PATH
     for pdf_path in pdf_paths:
-        print(pdf_path)
 
         filename = pdf_path.split('\\')[-1]
         in_file = os.path.abspath(pdf_path)
